@@ -702,8 +702,7 @@ because the template returns "No data." instead of an empty table.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Metadata.
-</p><p class="tableblock">An example of JsonSubType support.<br>
-See <a href="https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations#type-handling"> Jackson type documentation</a>.</p></td>
+</p><p class="tableblock">An example of JsonSubType support.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">meta.type</p></td>
@@ -892,8 +891,7 @@ Content-Length: 459
 <td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Metadata.
-</p><p class="tableblock">An example of JsonSubType support.<br>
-See <a href="https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations#type-handling"> Jackson type documentation</a>.</p></td>
+</p><p class="tableblock">An example of JsonSubType support.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[].meta.type</p></td>
@@ -1121,7 +1119,7 @@ Size must be between 0 and 1000 inclusive.</p></td>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/items' -i -X POST \
     -H 'Content-Type: application/json' \
-    -H 'Authorization: Bearer 5ce7867e-0458-4378-8b94-a7133a194e47' \
+    -H 'Authorization: Bearer de6048bc-f5f5-4ce1-b967-17251cccff36' \
     -d '{"description":"Hot News"}'</code></pre>
 </div>
 </div>
@@ -1262,8 +1260,7 @@ Size must be between 0 and 1000 inclusive.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Metadata.
-</p><p class="tableblock">An example of JsonSubType support.<br>
-See <a href="https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations#type-handling"> Jackson type documentation</a>.</p></td>
+</p><p class="tableblock">An example of JsonSubType support.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">meta.type</p></td>
@@ -1358,7 +1355,7 @@ Must be at most 10.</p></td>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/items/1' -i -X PUT \
     -H 'Content-Type: application/json' \
-    -H 'Authorization: Bearer 5ce7867e-0458-4378-8b94-a7133a194e47' \
+    -H 'Authorization: Bearer de6048bc-f5f5-4ce1-b967-17251cccff36' \
     -d '{"description":"Hot News"}'</code></pre>
 </div>
 </div>
@@ -1403,9 +1400,6 @@ Item must exist.</p>
 </div>
 <div class="paragraph">
 <p>An example of using path variables.</p>
-</div>
-<div class="paragraph">
-<p>See <a href="https://scacap.github.io/spring-auto-restdocs/#snippets-path-parameters">path parameters documentation</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_authorization_5"><a class="anchor" href="#_authorization_5"></a><a class="link" href="#_authorization_5">2.5.1. Authorization</a></h4>
@@ -1464,7 +1458,7 @@ Item must exist.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/items/1' -i -X DELETE \
-    -H 'Authorization: Bearer 5ce7867e-0458-4378-8b94-a7133a194e47'</code></pre>
+    -H 'Authorization: Bearer de6048bc-f5f5-4ce1-b967-17251cccff36'</code></pre>
 </div>
 </div>
 </div>
@@ -1493,9 +1487,6 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div class="paragraph">
 <p>An example of using parameter validation.</p>
-</div>
-<div class="paragraph">
-<p>See <a href="https://scacap.github.io/spring-auto-restdocs/#constraints">constraints documentation</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_authorization_6"><a class="anchor" href="#_authorization_6"></a><a class="link" href="#_authorization_6">2.6.1. Authorization</a></h4>
@@ -1580,8 +1571,7 @@ EN: Must be at least 1.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Metadata.
-</p><p class="tableblock">An example of JsonSubType support.<br>
-See <a href="https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations#type-handling"> Jackson type documentation</a>.</p></td>
+</p><p class="tableblock">An example of JsonSubType support.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">meta.type</p></td>
@@ -1715,9 +1705,6 @@ Content-Length: 133
 <div class="paragraph">
 <p>An example of using Pageable, Page and customized translation for paging text.</p>
 </div>
-<div class="paragraph">
-<p>See <a href="https://scacap.github.io/spring-auto-restdocs/#paging">paging documentation</a>.</p>
-</div>
 <div class="sect3">
 <h4 id="_authorization_7"><a class="anchor" href="#_authorization_7"></a><a class="link" href="#_authorization_7">2.7.1. Authorization</a></h4>
 <div class="paragraph">
@@ -1733,7 +1720,7 @@ Content-Length: 133
 <div class="sect3">
 <h4 id="_query_parameters_5"><a class="anchor" href="#_query_parameters_5"></a><a class="link" href="#_query_parameters_5">2.7.3. Query parameters</a></h4>
 <div class="paragraph">
-<p>Uses <a href="#overview-pagination">pagination</a> query params.</p>
+<p>Supports standard <a href="#overview-pagination">paging</a> query parameters.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1778,7 +1765,7 @@ Must be at most 100.</p></td>
 <div class="sect3">
 <h4 id="_response_fields_7"><a class="anchor" href="#_response_fields_7"></a><a class="link" href="#_response_fields_7">2.7.5. Response fields</a></h4>
 <div class="paragraph">
-<p><a href="#overview-pagination">Pagination</a> response with following <code>content</code>:</p>
+<p>Standard <a href="#overview-pagination">paging</a> response where <code>content</code> field is list of following objects:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1807,8 +1794,7 @@ Must be at most 100.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Metadata.
-</p><p class="tableblock">An example of JsonSubType support.<br>
-See <a href="https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations#type-handling"> Jackson type documentation</a>.</p></td>
+</p><p class="tableblock">An example of JsonSubType support.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">meta.type</p></td>
@@ -1954,14 +1940,14 @@ Content-Length: 830
     "pageSize" : 20
   },
   "total" : 1,
-  "last" : true,
   "totalPages" : 1,
   "totalElements" : 1,
+  "last" : true,
   "size" : 20,
   "number" : 0,
   "sort" : null,
-  "first" : true,
-  "numberOfElements" : 1
+  "numberOfElements" : 1,
+  "first" : true
 }</code></pre>
 </div>
 </div>
@@ -2425,7 +2411,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-02 11:03:07 CET
+Last updated 2018-01-04 17:11:51 EET
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
