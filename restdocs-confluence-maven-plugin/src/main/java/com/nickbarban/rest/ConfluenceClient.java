@@ -46,7 +46,6 @@ public class ConfluenceClient {
         this.endpoint = endpoint;
         objectMapper.configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, true);
         objectMapper.configure(JsonParser.Feature.AUTO_CLOSE_SOURCE, true);
-
     }
 
     public ConfluencePage getPage(String id) throws MojoExecutionException {
@@ -150,25 +149,38 @@ public class ConfluenceClient {
                 .addPathSegment("content")
                 .build();
         ConfluencePage page = ConfluencePageFactory.createStoragePage(title, content, space, ancestor);
-        log.debug(String.format("Page %s has content: %s", page.getTitle(), page.getBody().getStorage().getValue()));
         String json;
         try {
             json = objectMapper.writeValueAsString(page);
-            log.debug(String.format("Page %s is mapped to json: %s", title, json));
         } catch (JsonProcessingException e) {
             throw new MojoExecutionException(String.format("Can not map json from page %s", title), e);
         }
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
         Response response = postRequest(url, body);
 
-        try {
-            return objectMapper.readTree((response.body().string())).get("id").asText();
-        } catch (IOException e) {
-            throw new MojoExecutionException(String.format("Can not read response from %s", url.toString()), e);
+        if (response.isSuccessful()){
+            try {
+                String jsonResponse=response.body().string();
+                return objectMapper.readTree(jsonResponse).get("id").asText();
+            } catch (Exception e) {
+                throw new MojoExecutionException(String.format("Can not read response from %s.",url.toString()), e);
+            }
+        } else {
+            throw new MojoExecutionException(prepareErrorResponseMessage(response));
         }
     }
 
-    public String updatePage(ConfluencePage page, String content) throws MojoExecutionException {
+    private String prepareErrorResponseMessage(Response response) {
+        try {
+            return String.format("Response from %s %s is not successful. Code: %s. Response body: %s",
+                    response.request().method(), response.request().url(), response.code(), response.body().string());
+        } catch (IOException e) {
+            return String.format("Response from %s %s is not successful. Code: %s. Response body: %s",
+                    response.request().method(), response.request().url(), response.code(), "body can not be read!");
+        }
+    }
+
+    public String updatePage(ConfluencePage page) throws MojoExecutionException {
         log.info(String.format("Page %s will be updated", page.getTitle()));
 
         HttpUrl url = endpoint.newBuilder()
@@ -184,10 +196,15 @@ public class ConfluenceClient {
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
         Response response = putRequest(url, body);
 
-        try {
-            return objectMapper.readTree((response.body().string())).get("id").asText();
-        } catch (IOException e) {
+        if (response.isSuccessful()){
+            try {
+            String jsonResponse = response.body().string();
+            return objectMapper.readTree(jsonResponse).get("id").asText();
+        } catch (Exception e) {
             throw new MojoExecutionException(String.format("Can not read response from %s", url.toString()), e);
+        }
+        } else {
+            throw new MojoExecutionException(prepareErrorResponseMessage(response));
         }
     }
 

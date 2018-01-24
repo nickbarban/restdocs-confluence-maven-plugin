@@ -24,14 +24,15 @@ public class ConfluenceServiceImpl implements ConfluenceService {
     @Override
     public String saveOrUpdate(final String anchestorId, final String content, final String title) throws MojoExecutionException {
         Optional<ConfluencePage> pageOptional = Optional.ofNullable(confluenceClient.getPageByTitle(title));
-        log.debug(String.format("Page %s has content: %s", title, content));
 
         if (pageOptional.isPresent()) {
             ConfluencePage page = confluenceClient.getPage(pageOptional.get().getId());
             if (pageContentIsChanged(page, content)) {
                 updatePageContent(page, content);
+                return confluenceClient.updatePage(page);
+            } else {
+                return page.getId();
             }
-            return confluenceClient.updatePage(page, content);
         } else {
             return confluenceClient.createPage(anchestorId, content, title);
         }

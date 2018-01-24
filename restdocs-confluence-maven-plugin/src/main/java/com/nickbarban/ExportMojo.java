@@ -171,7 +171,6 @@ public class ExportMojo extends AbstractMojo {
             Map<String, Throwable> errors = new HashMap<>();
             childrenContent.entrySet().forEach(child -> {
                 String childPageTitle = documentUtils.getPageTitle(child.getKey());
-//                getLog().debug(String.format("Content for %s: %s", childPageTitle,  child.getValue()));
 
                 try {
                     confluenceClient.saveOrUpdate(parentId, child.getValue(), childPageTitle);
@@ -183,9 +182,9 @@ public class ExportMojo extends AbstractMojo {
             if (!errors.isEmpty()) {
                 String messages = errors.entrySet().stream()
                         .map(e -> e.getKey() + "::" + e.getValue())
-                        .collect(Collectors.joining("\r\n", "[[", "]]"));
-                throw new MojoExecutionException("Errors while saveOrUpdate children of parent %s. Messages:\r\n%s",
-                        parentId, messages);
+                        .collect(Collectors.joining("\r\n", "[msg-start]", "[msg-end]"));
+                throw new MojoExecutionException(String.format("Errors while saveOrUpdate children of parent %s. Messages:\r\n%s",
+                        parentId, messages));
             }
         }
     }
