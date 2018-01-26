@@ -1,6 +1,7 @@
 package com.nickbarban.service.impl;
 
 import com.nickbarban.model.ConfluencePage;
+import com.nickbarban.model.ConfluencePageFactory;
 import com.nickbarban.rest.ConfluenceClient;
 import com.nickbarban.service.ConfluenceService;
 import okhttp3.HttpUrl;
@@ -16,14 +17,17 @@ public class ConfluenceServiceImpl implements ConfluenceService {
 
     private ConfluenceClient confluenceClient;
 
+    private final String space;
+
     public ConfluenceServiceImpl(String userName, String password, HttpUrl endpoint, Log log, String space) {
         this.log = log;
-        confluenceClient = new ConfluenceClient(userName, password, endpoint, log, space);
+        confluenceClient = new ConfluenceClient(userName, password, endpoint, log);
+        this.space = space;
     }
 
     @Override
-    public String saveOrUpdate(final String anchestorId, final String content, final String title) throws MojoExecutionException {
-        Optional<ConfluencePage> pageOptional = Optional.ofNullable(confluenceClient.getPageByTitle(title));
+    public String saveOrUpdate(final String ancestorId, final String content, final String title) throws MojoExecutionException {
+        Optional<ConfluencePage> pageOptional = Optional.ofNullable(confluenceClient.getPageByTitleAndSpace(title, space));
 
         if (pageOptional.isPresent()) {
             ConfluencePage page = confluenceClient.getPage(pageOptional.get().getId());
@@ -34,7 +38,8 @@ public class ConfluenceServiceImpl implements ConfluenceService {
                 return page.getId();
             }
         } else {
-            return confluenceClient.createPage(anchestorId, content, title);
+            ConfluencePage page = ConfluencePageFactory.createStoragePage(title, content, space, ancestorId);
+            return confluenceClient.createPage(page);
         }
     }
 
