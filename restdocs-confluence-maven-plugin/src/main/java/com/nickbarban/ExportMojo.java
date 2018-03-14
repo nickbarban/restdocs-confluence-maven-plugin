@@ -40,14 +40,6 @@ import java.util.stream.Collectors;
 public class ExportMojo extends AbstractMojo {
 
     /**
-     * Location of the result output folder.
-     *
-     * @parameter property="project.build.directory"
-     */
-    @Parameter(property = "outputDirectory", defaultValue = "${project.build.directory}/confluence")
-    private File outputDirectory;
-
-    /**
      * Location of the resources folder.
      *
      * @parameter property="basedir"
@@ -198,7 +190,6 @@ public class ExportMojo extends AbstractMojo {
         getLog().debug(String.format("childrenDirectoryName=%s", this.childrenDirectoryName));
         getLog().debug(String.format("generatedDocsDirectory=%s", this.generatedDocsDirectory));
         getLog().debug(String.format("indexFileName=%s", this.indexFileName));
-        getLog().debug(String.format("outputDirectory=%s", this.outputDirectory));
         getLog().debug(String.format("password=%s", this.password));
         getLog().debug(String.format("userName=%s", this.userName));
         getLog().debug(String.format("space=%s", this.space));
