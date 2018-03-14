@@ -1,0 +1,48 @@
+*target*
+*.war
+*.ear
+*.class
+*generated-assertions*
+
+# eclipse specific git ignore
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+ui/server/
+ui/src/main/webapp/build
+ui/src/main/webapp/templates
+ui/src/main/resources/node
+ui/src/main/resources/node_modules
+
+# Intellij 
+.idea/
+*.iml 
+*.iws
+
+ui/src/main/resources/node/**
+ui/src/main/resources/node_modules/**
+webapp/*.xml
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+.tern-project
+
+.springBeans
+.toDelete
+
+# Any logger's files
+*.log
